@@ -1,0 +1,418 @@
+/* Base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Panel and filter styles */
+
+/* Upload panel styles */
+.upload-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #C0C0C0;
+    padding: 20px;
+    border: outset 3px #FFFFFF;
+    z-index: 1002;
+    font-family: 'Courier New', monospace;
+    width: 90%;
+    max-width: 500px;
+}
+
+.upload-form .form-group {
+    margin-bottom: 15px;
+}
+
+.upload-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.upload-form input[type="text"],
+.upload-form textarea,
+.upload-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.upload-form textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.or-divider {
+    text-align: center;
+    margin: 10px 0;
+    color: #666;
+}
+
+#selected-location {
+    color: #666;
+    font-style: italic;
+    margin: 5px 0;
+}
+.filter-panel, .time-filter {
+    position: fixed;
+    top: 70px;
+    left: 20px;  /* Changed from right: 320px to left: 20px to position on the left side */
+    background: #C0C0C0;
+    padding: 20px;
+    border: outset 3px #FFFFFF;
+    z-index: 1000;
+    width: 300px;
+    color: #000080;
+    font-family: 'Courier New', monospace;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.filter-section {
+    margin: 15px 0;
+    padding: 10px;
+    background: #FFFFFF;
+    border: inset 2px #808080;  /* Updated to match retro theme */
+}
+
+.filter-section h4 {
+    margin: 0 0 10px 0;
+    color: #000080;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.filter-section label {
+    display: block;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #000080;
+}
+
+.filter-section input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.filter-section input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.time-ranges label {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Search bar */
+.search-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    width: 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 14px;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+}
+
+.search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.search-result-item:hover {
+    background: #f5f5f5;
+}
+
+/* Panel and control styles */
+.panel-controls {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    display: flex;
+    gap: 10px;
+}
+
+.control-button {
+    padding: 8px 15px;
+    background: white;
+    border: 1px solid #000;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.control-button:hover {
+    background: #f0f0f0;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #000;
+    padding: 5px;
+    z-index: 1002;
+}
+
+.close-button:hover {
+    color: #ff0000;
+}
+
+/* Info container and indicators */
+.info-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.activity-indicator {
+    background: white;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.legend {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.legend-item {
+    margin: 5px 0;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    border: 1px solid #000;
+}
+
+/* Comparison panel styles */
+.comparison-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.compare-location {
+    padding: 20px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Analysis styles */
+.analysis-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.analysis-section h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.sound-patterns, 
+.environmental-comparison, 
+.activity-analysis {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Location details */
+.location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.quality-indicator {
+    padding: 3px 8px;
+    border-radius: 3px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.device-tag,
+.quality-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+/* Audio player styles */
+.audio-container {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.audio-container audio {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Activity dots */
+.dot {
+    height: 8px;
+    width: 8px;
+    margin-right: 4px;
+    display: inline-block;
+    border: 1px solid black;
+}
+
+.dot.filled {
+    background-color: #000;
+}
+
+.dot.empty {
+    background-color: transparent;
+}
+
+/* Temperature visualization */
+.temperature-bar {
+    height: 20px;
+    background: linear-gradient(to right, #00ff00, #ff0000);
+    margin: 5px 0;
+    position: relative;
+}
+
+.temperature-marker {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: #000;
+    transform: translateX(-50%);
+}
+
+/* Utility classes */
+.hide {
+    display: none !important;
+}
+
+.back-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: white;
+    border: 1px solid #000;
+    text-decoration: none;
+    color: #000;
+    z-index: 1000;
+}
+
+/* Chart styles */
+.visualization-container {
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.chart-controls {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.chart-type-button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+}
+
+.chart-type-button.active {
+    background: #2C2C2C;
+    color: white;
+    border-color: #2C2C2C;
+}

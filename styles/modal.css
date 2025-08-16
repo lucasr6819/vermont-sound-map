@@ -1,0 +1,76 @@
+/* Modal Backdrop */
+.modal-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container.show {
+    display: flex;
+    opacity: 1;
+}
+
+/* Modal Content Box */
+.modal-content {
+    position: relative;
+    background-color: #f8f9fa;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-container.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Modal Body - where the content goes */
+#modal-body {
+    padding: 15px;
+    line-height: 1.6;
+    font-family: 'Roboto Mono', sans-serif;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Close Button */
+.modal-close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Reuse popup styles inside the modal */
+#modal-body .custom-popup-content {
+    padding: 0;
+}

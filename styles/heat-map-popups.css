@@ -1,0 +1,269 @@
+.heat-map-popup {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #333;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.heat-map-popup h3 {
+    margin: 0 0 12px 0;
+    color: #2c3e50;
+    font-size: 1.2em;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #3498db;
+    font-weight: 600;
+}
+
+.heat-map-popup .popup-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.heat-map-popup .section {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid #3498db;
+    margin-bottom: 0;
+    min-width: 220px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.heat-map-popup .section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.heat-map-popup .section h4 {
+    margin: 0 0 6px 0;
+    color: #34495e;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.heat-map-popup .section p {
+    margin: 3px 0;
+    font-size: 0.85em;
+    line-height: 1.3;
+}
+
+.heat-map-popup ul {
+    margin: 3px 0;
+    padding-left: 15px;
+    list-style-type: none;
+}
+
+.heat-map-popup li {
+    margin: 3px 0;
+    font-size: 0.85em;
+    line-height: 1.3;
+    position: relative;
+}
+
+.heat-map-popup li:before {
+    content: "•";
+    position: absolute;
+    left: -10px;
+    color: #3498db;
+}
+
+.heat-map-popup em {
+    color: #2c3e50;
+    font-style: italic;
+}
+
+.heat-map-popup small {
+    color: #666;
+    font-size: 0.8em;
+    display: block;
+    margin-top: 6px;
+}
+
+.heat-map-popup strong {
+    color: #2c3e50;
+}
+
+/* Custom section colors */
+.heat-map-popup .section.current { border-left-color: #e74c3c; }
+.heat-map-popup .section.noise-profile { border-left-color: #f39c12; }
+.heat-map-popup .section.historical { border-left-color: #27ae60; }
+.heat-map-popup .section.methodology { border-left-color: #8e44ad; }
+.heat-map-popup .section.quote { 
+    border-left-color: #2c3e50;
+    grid-column: 1 / -1; /* Make quote section span full width */
+}
+
+/* Blockquote styling */
+.heat-map-popup blockquote {
+    margin: 6px 0;
+    padding-left: 10px;
+    border-left: 2px solid #95a5a6;
+    font-style: italic;
+}
+
+.heat-map-popup blockquote p {
+    color: #34495e;
+}
+
+.heat-map-popup cite {
+    display: block;
+    font-size: 0.8em;
+    color: #7f8c8d;
+    margin-top: 4px;
+}
+
+/* Popup animation */
+.leaflet-popup {
+    opacity: 0;
+    animation: popupFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.heat-map-detailed-popup {
+    pointer-events: auto !important;
+}
+
+.heat-map-detailed-popup .leaflet-popup-content-wrapper {
+    border-radius: 10px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.15);
+}
+
+.heat-map-detailed-popup .leaflet-popup-tip {
+    box-shadow: 0 3px 14px rgba(0,0,0,0.15);
+}
+
+.heat-map-detailed-popup .leaflet-popup-content-wrapper {
+    padding: 0;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-radius: 8px;
+}
+
+.heat-map-detailed-popup .leaflet-popup-content {
+    margin: 0;
+    padding: 15px;
+    width: 600px !important;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.heat-map-detailed-popup .leaflet-popup-content-wrapper {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.heat-map-detailed-popup .leaflet-popup-tip {
+    background: #fff;
+}
+
+.impact-popup .leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.2);
+}
+
+.impact-popup .leaflet-popup-content {
+    margin: 0;
+    padding: 16px;
+    min-width: 300px;
+}
+
+.impact-info {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #2c3e50;
+}
+
+.impact-info h3 {
+    margin: 0 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e74c3c;
+    color: #c0392b;
+    font-size: 1.2em;
+}
+
+.impact-details {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.impact-details ul {
+    margin: 8px 0;
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.impact-details li {
+    margin: 4px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.impact-details li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+}
+
+.impact-details p {
+    margin: 8px 0;
+}
+
+.impact-details strong {
+    color: #2c3e50;
+}
+
+.impact-details .note {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Heat map toggle button active state */
+.toggle-heat-map.active {
+    background: #c0392b !important;
+}
+
+/* Popup arrow */
+.impact-popup .leaflet-popup-tip {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Improve popup readability */
+.heat-map-popup .impact-details {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.heat-map-popup .impact-details ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+/* Improve popup layout on smaller screens */
+@media (max-width: 600px) {
+    .heat-map-popup .popup-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .heat-map-popup {
+        max-width: 300px;
+    }
+}

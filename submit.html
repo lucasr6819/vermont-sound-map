@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sound Recording Information - Outside Sounds</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #C0C0C0;
+            border: outset 3px #FFFFFF;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .form-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #FFFFFF;
+            border: inset 2px #808080;
+        }
+
+        .form-section h3 {
+            color: #000080;
+            margin-bottom: 15px;
+        }
+
+        .question-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #000080;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], 
+        textarea, 
+        select {
+            width: 100%;
+            padding: 8px;
+            border: inset 2px #808080;
+            background: #FFFFFF;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 10px;
+        }
+
+        .required {
+            color: #FF0000;
+        }
+
+        .hint {
+            font-size: 0.9em;
+            color: #666666;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Sound Recording Documentation</h2>
+        
+        <div class="form-section">
+            <h3>1. Basic Information</h3>
+            <div class="question-group">
+                <label>Recording Title <span class="required">*</span></label>
+                <input type="text" required placeholder="e.g., Morning Birds at Mont Royal">
+                <p class="hint">Choose a descriptive title that captures the main sound elements</p>
+            </div>
+            
+            <div class="question-group">
+                <label>Date and Time of Recording <span class="required">*</span></label>
+                <input type="datetime-local" required>
+            </div>
+            
+            <div class="question-group">
+                <label>Weather Conditions <span class="required">*</span></label>
+                <select required>
+                    <option value="">Select weather condition</option>
+                    <option value="clear">Clear</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="rain">Rain</option>
+                    <option value="snow">Snow</option>
+                    <option value="wind">Windy</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>2. Location Details</h3>
+            <div class="question-group">
+                <label>Location Name <span class="required">*</span></label>
+                <input type="text" required placeholder="e.g., Parc Mont-Royal, Main Path">
+            </div>
+            
+            <div class="question-group">
+                <label>Environment Type <span class="required">*</span></label>
+                <select required>
+                    <option value="">Select environment type</option>
+                    <option value="urban">Urban Area</option>
+                    <option value="park">Park/Garden</option>
+                    <option value="forest">Forest</option>
+                    <option value="water">Waterfront</option>
+                    <option value="residential">Residential Area</option>
+                    <option value="industrial">Industrial Area</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>3. Sound Characteristics</h3>
+            <div class="question-group">
+                <label>Primary Sound Category <span class="required">*</span></label>
+                <select required>
+                    <option value="">Select primary category</option>
+                    <option value="nature">Nature Sounds</option>
+                    <option value="urban">Urban Sounds</option>
+                    <option value="human">Human Activity</option>
+                    <option value="music">Music/Performance</option>
+                    <option value="machine">Machinery/Equipment</option>
+                    <option value="transport">Transportation</option>
+                </select>
+            </div>
+            
+            <div class="question-group">
+                <label>Sound Description <span class="required">*</span></label>
+                <textarea required rows="4" placeholder="Describe what can be heard in detail..."></textarea>
+                <p class="hint">Include both prominent and background sounds</p>
+            </div>
+
+            <div class="question-group">
+                <label>Estimated Activity Level (1-10) <span class="required">*</span></label>
+                <input type="range" min="1" max="10" value="5">
+                <p class="hint">1 = Very quiet, 10 = Very active/loud</p>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>4. Technical Information</h3>
+            <div class="question-group">
+                <label>Recording Duration <span class="required">*</span></label>
+                <input type="text" required placeholder="e.g., 3:30">
+            </div>
+            
+            <div class="question-group">
+                <label>Recording Quality <span class="required">*</span></label>
+                <select required>
+                    <option value="">Select quality level</option>
+                    <option value="high">High (Professional Equipment)</option>
+                    <option value="medium">Medium (Good Quality Consumer Device)</option>
+                    <option value="low">Low (Basic Mobile Device)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>5. Additional Notes</h3>
+            <div class="question-group">
+                <label>Special Observations</label>
+                <textarea rows="3" placeholder="Any unique or interesting observations..."></textarea>
+            </div>
+            
+            <div class="question-group">
+                <label>Time of Day Characteristics</label>
+                <textarea rows="2" placeholder="How might this location sound different at other times..."></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

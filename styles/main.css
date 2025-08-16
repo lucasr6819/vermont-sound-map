@@ -1,0 +1,421 @@
+/* General Body and Map Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border: 5px solid #000080; /* Dark blue border on other sides */
+    border-top-width: 36px; /* Adjusted top border thickness */
+    box-sizing: border-box; /* Ensures border is inside the element's dimensions */
+}
+
+/* Back Button Styles */
+#back-button {
+    position: absolute;
+    top: 4px; /* Adjusted position */
+    left: 15px;
+    z-index: 1001; /* Ensure it's above the map border */
+    background-color: #f4f4f4;
+    color: #000080;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    border: 1px solid #000080;
+}
+
+#back-button:hover {
+    background-color: #ddd;
+}
+
+/* Common Panel Styles */
+.panel-base {
+    background: rgba(192, 192, 192, 0.95);
+    border: outset 3px #FFFFFF;
+    font-family: 'Courier New', monospace;
+    color: #000080;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Control Panel */
+.control-panel {
+    position: fixed;
+    top: 50px; /* Lowered the panel */
+    left: 20px;
+    width: 250px;
+    z-index: 1000;
+    padding: 12px;
+}
+
+.compact-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.control-group h3 {
+    margin: 0 0 8px 0;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    color: #2c3e50;
+}
+
+.control-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+select.time-select, select.weather-select {
+    flex: 1;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.toggle-heat-map {
+    width: 100%;
+    padding: 6px;
+    background: #34495e;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.toggle-heat-map:hover {
+    background: #2c3e50;
+}
+
+.panel-section {
+    margin-bottom: 15px;
+}
+
+.panel-section h3 {
+    margin: 0 0 10px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #000080;
+    color: #000080;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Search Styles */
+#search-input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: inset 2px #808080;
+    background: #FFFFFF;
+    color: #000080;
+    font-family: 'Courier New', monospace;
+}
+
+#search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    background: #FFFFFF;
+    border: inset 2px #808080;
+    margin-top: 5px;
+}
+
+.search-result {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #808080;
+    color: #000080;
+    background: #FFFFFF;
+}
+
+.search-result:hover {
+    background: #f5f5f5;
+}
+
+/* Audio Player Styles */
+.audio-container {
+    margin: 15px 0;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.audio-frame {
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-radius: 4px;
+    background: #fff;
+}
+
+audio {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    border-radius: 4px;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #f8f9fa;
+}
+
+audio::-webkit-media-controls-play-button {
+    background-color: #4CAF50;
+    border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button:hover {
+    background-color: #45a049;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.play-button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.play-button:hover {
+    background: #45a049;
+}
+
+.time-display {
+    font-family: monospace;
+    color: #666;
+}
+
+.tags {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.tag {
+    background: #e9ecef;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #495057;
+}
+
+/* Connections Panel */
+#connection-info {
+    display: block !important;
+    margin-top: 15px;
+    padding: 10px;
+    background: #FFFFFF;
+    border: inset 2px #808080;
+}
+
+#toggle-connections {
+    width: 100%;
+    padding: 8px;
+    background: #C0C0C0;
+    border: outset 2px #FFFFFF;
+    color: #000080;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    text-align: left;
+}
+
+#toggle-connections:active {
+    border-style: inset;
+}
+
+#toggle-connections.active {
+    background: #000080;
+    color: #FFFFFF;
+    border-style: inset;
+}
+
+/* Toggle Buttons */
+.toggle-btn {
+    flex: 1;
+    padding: 8px;
+    background: #C0C0C0;
+    border: outset 2px #FFFFFF;
+    color: #000080;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.toggle-btn:active {
+    border-style: inset;
+}
+
+.toggle-btn.active {
+    background: #000080;
+    color: #FFFFFF;
+    border-style: inset;
+}
+
+/* Popup and Tooltip Styles */
+.custom-popup .leaflet-popup-content {
+    min-width: 300px;
+    margin: 13px;
+}
+
+.custom-popup {
+    font-family: 'Courier New', monospace;
+    color: #000080;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.custom-popup h3 {
+    margin: 0 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000080;
+    color: #000080;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.custom-popup .popup-section {
+    margin: 10px 0;
+    padding: 10px;
+    background: #FFFFFF;
+    border: inset 2px #808080;
+}
+
+.custom-popup .description {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.custom-popup .info p {
+    margin: 5px 0;
+}
+
+.custom-popup .audio-container {
+    margin: 15px 0;
+    padding: 10px;
+    background: #000080;
+    border: outset 3px #FFFFFF;
+}
+
+.custom-popup audio {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    background: #FFFFFF;
+    border: inset 2px #808080;
+}
+
+.custom-popup .tags {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.custom-popup .tag {
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 12px;
+    border: outset 1px #FFFFFF;
+    font-family: 'Courier New', monospace;
+}
+
+.custom-popup .metadata {
+    margin-top: 15px;
+}
+
+.custom-popup .metadata h4 {
+    margin: 0 0 8px 0;
+    color: #000080;
+    font-size: 14px;
+}
+
+.custom-popup .metadata p {
+    margin: 4px 0;
+    font-size: 12px;
+}
+
+.custom-tooltip {
+    background: #000080;
+    border: outset 2px #FFFFFF;
+    color: #FFFFFF;
+    font-family: 'Courier New', monospace;
+    padding: 6px;
+    font-size: 12px;
+}
+
+.custom-tooltip .leaflet-tooltip-content {
+    margin: 0;
+}
+
+.marker-tooltip {
+    text-align: center;
+    line-height: 1.4;
+}
+
+.marker-tooltip strong {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.marker-tooltip small {
+    opacity: 0.8;
+}
+
+.heat-map-tooltip {
+    background: rgba(0, 0, 128, 0.95);
+    border: outset 2px #FFFFFF;
+    color: #FFFFFF;
+    font-family: 'Courier New', monospace;
+    padding: 8px;
+    min-width: 150px;
+}
+
+.noise-tooltip {
+    text-align: center;
+    line-height: 1.4;
+}
+
+.noise-tooltip strong {
+    display: block;
+    color: #FFFF00;
+    margin-bottom: 3px;
+}
+
+.noise-tooltip small {
+    display: block;
+    margin-top: 3px;
+    opacity: 0.8;
+}

@@ -1,0 +1,635 @@
+.connection-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1002;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#toggle-connections {
+    background: #C0C0C0;
+    border: outset 3px #FFFFFF;
+    color: #000080;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 200px;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#toggle-connections:hover {
+    background: #D0D0D0;
+    transform: translateY(-1px);
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+#toggle-connections:active {
+    border-style: inset;
+    transform: translateY(1px);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#toggle-connections i {
+    color: #000080;
+    font-size: 16px;
+}
+
+.connection-panel {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 280px;
+    background: #C0C0C0;
+    border: outset 3px #FFFFFF;
+    z-index: 1001;
+    padding: 15px;
+    display: none;
+    font-family: 'Courier New', monospace;
+    color: #000080;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.connection-panel.visible {
+    display: block;
+}
+
+.connection-panel h3 {
+    margin: 0 0 15px 0;
+    color: #000080;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000080;
+    padding-bottom: 8px;
+}
+
+.connection-panel h4 {
+    margin: 10px 0;
+    color: #000080;
+    font-size: 14px;
+}
+
+.connection-panel h3 {
+    margin: 0 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000080;
+    color: #000080;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.connection-panel.visible {
+    display: block;
+}
+
+.connection-filters {
+    margin-top: 15px;
+}
+
+.connection-category {
+    background: #FFFFFF;
+    padding: 12px;
+    border: inset 2px #808080;
+    margin-bottom: 15px;
+}
+
+.filter-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-items label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #000080;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filter-items input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #000080;
+    accent-color: #000080;
+}
+
+.connection-strength {
+    background: #FFFFFF;
+    padding: 12px;
+    border: inset 2px #808080;
+    margin-top: 15px;
+}
+
+.strength-slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.strength-slider span {
+    color: #000080;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.strength-slider input[type="range"] {
+    flex: 1;
+}
+
+.strength-value {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.connection-strength {
+    margin-top: 15px;
+}
+
+.connection-strength label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.connection-strength input {
+    width: 100%;
+}
+
+.connection-control a {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: #666;
+    display: block;
+}
+
+.connection-control.active a {
+    background-color: #f4f4f4;
+    color: #0078A8;
+}
+
+.connection-control:hover {
+    background-color: #f4f4f4;
+}
+
+.connection-line {
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.connection-line:hover {
+    opacity: 1 !important;
+    stroke-width: 4;
+}
+
+.connection-tooltip {
+    background: #000080;
+    border: outset 2px #FFFFFF;
+    color: #FFFFFF;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    padding: 12px;
+    max-width: 250px;
+}
+
+.connection-tooltip h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.connection-tooltip .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.connection-tooltip .tag {
+    background: rgba(255,255,255,0.2);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 11px;
+}
+
+.connection-legend {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #C0C0C0;
+    border: outset 3px #FFFFFF;
+    padding: 15px;
+    z-index: 1000;
+    font-family: 'Courier New', monospace;
+    color: #000080;
+    min-width: 200px;
+}
+
+.connection-legend.visible {
+    display: block;
+}
+
+.connection-legend h4 {
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000080;
+}
+
+.legend-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFFFFF;
+    padding: 4px 8px;
+    border: inset 1px #808080;
+}
+
+.connection-legend.visible {
+    display: block;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 3px;
+    margin-right: 8px;
+}
+
+.legend-label {
+    font-size: 12px;
+}
+
+/* Button styles */
+.retro-button {
+    background: #C0C0C0;
+    border: outset 3px #FFFFFF;
+    color: #000080;
+    padding: 8px 16px;
+    margin: 10px 0;
+    width: 100%;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.retro-button:hover {
+    background: #D0D0D0;
+}
+
+.retro-button:active,
+.retro-button.active {
+    border-style: inset;
+    background: #B0B0B0;
+}
+
+.retro-button i {
+    font-size: 16px;
+}
+
+/* Connection info panel */
+.connection-info {
+    background: #FFFFFF;
+    border: inset 2px #808080;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.connection-info h4 {
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000080;
+    color: #000080;
+    font-size: 14px;
+}
+
+.connection-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.connection-details {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.connection-details h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.connection-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.connection-details li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.connection-details small {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.connection-popup {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.connection-popup-content {
+    padding: 10px;
+    max-width: 250px;
+}
+
+.connection-popup .leaflet-popup-content-wrapper {
+    background: transparent;
+    box-shadow: none;
+}
+
+.connection-popup .leaflet-popup-tip {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+#toggle-connections.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Animation for connection lines */
+@keyframes dash {
+    to {
+        stroke-dashoffset: -20;
+    }
+}
+
+.leaflet-overlay-pane svg path {
+    animation: dash 20s linear infinite;
+}
+
+/* Make sure connections appear above map */
+.leaflet-overlay-pane {
+    z-index: 998 !important;
+}
+
+.animated-connection {
+    transition: all 0.3s ease;
+    animation: connectionFadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes connectionFadeIn {
+    from {
+        opacity: 0;
+        stroke-dashoffset: 100;
+    }
+    to {
+        opacity: 0.7;
+        stroke-dashoffset: 0;
+    }
+}
+
+.selected-marker {
+    filter: hue-rotate(180deg) brightness(1.2) !important;
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+    z-index: 1000 !important;
+}
+
+/* Connection state indicators */
+.toggle-btn[onclick="toggleConnections()"].active + .connection-state {
+    background: #4CAF50;
+}
+
+.toggle-btn[onclick="toggleConnections()"].active {
+    background: #000080 !important;
+    color: white !important;
+}
+
+/* Marker hover effects in connection mode */
+.leaflet-marker-icon {
+    transition: all 0.3s ease;
+}
+
+.leaflet-marker-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Connection info panel */
+#connection-info {
+    display: none;
+    margin-top: 12px;
+    background: white;
+    border-radius: 4px;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#connection-info.visible {
+    display: block;
+    animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Connection lines */
+.connection-line {
+    stroke-dasharray: 5, 10;
+    animation: dash 30s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -1000;
+    }
+}
+
+.connection-popup {
+    min-width: 200px;
+    font-family: 'Courier New', monospace;
+    color: #000080;
+}
+
+.connection-popup h4 {
+    margin: 0 0 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #000080;
+}
+
+.connection-popup ul {
+    margin: 4px 0;
+    padding-left: 20px;
+}
+
+.connection-popup li {
+    margin: 2px 0;
+}
+
+.connection-popup small {
+    color: #666;
+    font-style: italic;
+}
+
+#connection-info {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+#connection-info h4 {
+    margin: 0 0 8px 0;
+    color: #000080;
+}
+
+#connection-info ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+#connection-info li {
+    margin: 4px 0;
+    color: #333;
+}
+
+#connection-info small {
+    color: #666;
+    margin-left: 4px;
+}
+
+.selected-marker {
+    filter: hue-rotate(180deg) brightness(1.2);
+    transform: scale(1.2);
+    transition: all 0.3s ease;
+}
+
+.connection-tooltip {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.connection-tooltip h4 {
+    margin: 0 0 8px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #ddd;
+    color: #2c3e50;
+}
+
+.connection-tooltip ul {
+    margin: 4px 0;
+    padding-left: 16px;
+}
+
+.connection-tooltip li {
+    margin: 2px 0;
+    font-size: 0.9em;
+}
+
+.connection-info-panel {
+    background: #fff;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.connection-summary h4 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+}
+
+.connection-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.connection-item {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.connection-item:last-child {
+    border-bottom: none;
+}
+
+.connection-strength {
+    margin-left: 8px;
+    color: #3498db;
+    font-size: 0.8em;
+}
+
+.connection-item small {
+    display: block;
+    color: #666;
+    font-size: 0.85em;
+    margin-top: 4px;
+}
+
+/* Connection strength colors */
+.connection-strength {
+    letter-spacing: 2px;
+}
+
+.connection-strength[data-strength="strong"] {
+    color: #2ecc71;
+}
+
+.connection-strength[data-strength="medium"] {
+    color: #3498db;
+}
+
+.connection-strength[data-strength="weak"] {
+    color: #95a5a6;
+}

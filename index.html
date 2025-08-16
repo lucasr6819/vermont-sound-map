@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outside Sounds - Sound Archive Map</title>
+    <style>
+        :root {
+            --primary-color: #000080;
+            --accent-color: #808080;
+            --text-color: #000000;
+            --background-color: #C0C0C0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2r9//38GJgYGhv8AAQYACPACChxvm2MAAAAASUVORK5CYII=');
+        }
+
+        .hero {
+            background-color: #000080;
+            color: #FFFFFF;
+            text-align: center;
+            min-height: auto;
+            padding: 2rem;
+            border: double 6px #FFFFFF;
+            margin: 20px;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 1.5rem;
+            border: 2px solid #000000;
+            padding: 5px;
+            background: #FFFFFF;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FFFF00;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            line-height: 1.4;
+            border: 1px solid #FFFFFF;
+            padding: 1rem;
+            background: #000080;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #C0C0C0;
+            color: #000080;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 1rem;
+            border: outset 3px #FFFFFF;
+        }
+
+        .cta-button:hover {
+            background-color: #FFFFFF;
+            border-style: inset;
+        }
+
+        .features {
+            width: 800px;
+            max-width: 90%;
+            margin: 20px auto;
+            border: 2px solid #000080;
+            background: #FFFFFF;
+        }
+
+        .feature {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid #808080;
+        }
+
+        .feature:last-child {
+            border-bottom: none;
+        }
+
+        .feature h3 {
+            color: #000080;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .feature p {
+            color: #000000;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0.5rem;
+            background: #F0F0F0;
+        }
+
+        footer {
+            background-color: #000;
+            color: #4ECDC4;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 5px solid #FF6B6B;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-image: 
+                linear-gradient(45deg, transparent 45%, #FF6B6B 45%, #FF6B6B 55%, transparent 55%);
+            background-size: 10px 10px;
+        }
+
+        .marquee {
+            background: #000080;
+            color: #FFFF00;
+            white-space: nowrap;
+            padding: 5px 0;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 1rem;
+            border-top: 1px solid #FFFFFF;
+            border-bottom: 1px solid #FFFFFF;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .marquee:hover {
+            background: #000066;
+            color: #FFFFFF;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(100vw); }
+            to { transform: translateX(-100%); }
+        }
+
+        .construction {
+            text-align: center;
+            padding: 2rem;
+            background: #000;
+            margin: 20px;
+            border: 3px solid #FF6B6B;
+        }
+
+        .construction img {
+            max-width: 100px;
+            margin: 10px;
+        }
+
+        .blink {
+            animation: blinker 1s step-end infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .divider {
+            height: 10px;
+            background: repeating-linear-gradient(45deg, #FF6B6B, #FF6B6B 10px, #000 10px, #000 20px);
+            margin: 2rem 0;
+        }
+
+        /* 90s Style Media Queries */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+                text-shadow: 2px 2px 0 #FF6B6B, 4px 4px 0 #000;
+            }
+
+            .hero {
+                margin: 10px;
+                border-width: 10px;
+            }
+
+            .feature {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Best viewed badge */
+        .best-viewed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #000;
+            color: #4ECDC4;
+            padding: 10px;
+            border: 2px solid #FF6B6B;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            z-index: 1000;
+            transform: rotate(5deg);
+        }
+
+        .coming-soon {
+            width: 800px;
+            max-width: 90%;
+            margin: 20px auto;
+            padding: 1rem;
+            background: #000080;
+            color: #FFFFFF;
+            text-align: center;
+            border: double 6px #FFFFFF;
+        }
+
+        .coming-soon h2 {
+            color: #FFFF00;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .coming-soon p {
+            font-size: 1rem;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img src="outside.png" alt="Outside Sounds Logo" class="logo">
+        <div>
+            <a href="map.html" class="cta-button">Montreal Sound Map</a>
+            <a href="vermont-map.html" class="cta-button">Vermont Sound Map</a>
+            <a href="https://deformity.ai/d/G3qJhormTZGo" target="_blank" class="cta-button">Submit Recording</a>
+        </div>
+    </div>
+</body>
+</html>

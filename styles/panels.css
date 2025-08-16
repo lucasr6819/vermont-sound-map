@@ -1,0 +1,154 @@
+/* /styles/panels.css */
+
+/* Main control panel styling */
+.control-panel {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 320px;
+    z-index: 1000;
+    background: rgba(211, 211, 211, 0.9); /* Light grey, slightly transparent */
+    border: 2px solid #888;
+    border-radius: 0;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+    font-family: 'VT323', monospace, 'Courier New';
+    color: #000;
+}
+
+.panel-header {
+    background: #888;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 18px;
+    border-bottom: 2px solid #888;
+    cursor: grab;
+}
+
+.panel-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Control groups within the panel */
+.control-group {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border: 1px solid #aaa;
+    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.1);
+}
+
+.control-group h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+/* Search input and results */
+#map-search {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #888;
+    background: #fff;
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#search-results {
+    max-height: 150px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #888;
+    border-top: none;
+}
+
+.search-result {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.search-result:hover {
+    background: #f0f0f0;
+}
+
+/* Buttons and selects */
+.control-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.toggle-btn, .toggle-heat-map {
+    flex: 1;
+    padding: 8px;
+    background: #bbb;
+    border: 2px solid #888;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+    text-align: center;
+    transition: all 0.2s;
+    box-shadow: 2px 2px 0px #888;
+}
+
+.toggle-btn:active, .toggle-heat-map:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+}
+
+.toggle-btn.active {
+    background: #333;
+    color: #fff;
+    border-color: #000;
+}
+
+select.time-select, select.weather-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #888;
+    background: #fff;
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+}
+
+/* Info Panel */
+.info-panel {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 300px;
+    z-index: 1000;
+    background: rgba(211, 211, 211, 0.9);
+    border: 2px solid #888;
+    box-shadow: -5px -5px 0px rgba(0,0,0,0.5);
+}
+
+.info-header {
+    background: #888;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-content {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.info-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}

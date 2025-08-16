@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vermont Sound Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="vermont-map.css">
+    <link rel="stylesheet" href="styles/modal.css">
+</head>
+<body>
+    <div id="sidebar">
+        <h1>Vermont Sound Map</h1>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search sounds..." list="search-suggestions">
+            <datalist id="search-suggestions"></datalist>
+        </div>
+        <div id="filters-container">
+            <h2>Categories</h2>
+            <div id="category-filters"></div>
+        </div>
+        <div id="audio-points-container">
+            <button id="toggle-audio-points">Show Audio Points</button>
+        </div>
+        <div id="connections-container">
+            <h2>Connections</h2>
+            <button id="toggle-connections">Show Connections</button>
+            <div id="connection-filters" style="display: none;">
+                <h3>Filter by Category</h3>
+                <label><input type="checkbox" value="Historical"> Historical</label>
+                <label><input type="checkbox" value="Cultural"> Cultural</label>
+                <label><input type="checkbox" value="Environmental"> Environmental</label>
+                <label><input type="checkbox" value="Community"> Community</label>
+                <label><input type="checkbox" value="Political"> Political</label>
+                <h3>Minimum Shared Tags</h3>
+                <input type="range" id="min-shared-tags" min="1" max="5" value="1">
+                <span id="min-tags-value">1</span>
+            </div>
+        </div>
+        <div id="heatmap-container">
+            <h2>Sound Pollution Heatmap</h2>
+            <button id="toggle-heatmap">Show Heatmap</button>
+        </div>
+    </div>
+    <div id="map"></div>
+
+    <!-- Modal for Heatmap Popups -->
+    <div id="heatmap-modal" class="modal-container">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <script src="vermont-original-data.js"></script>
+    <script src="vermont-noise-data.js"></script>
+    <script src="vermont-sound-pollution-data.js"></script>
+    <script src="vermont-map.js"></script>
+</body>
+</html>

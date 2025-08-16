@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Outside Sounds - Interactive Sound Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background-color: #C0C0C0;
+            color: #000080;
+        }
+        #map {
+            width: 100%;
+            height: 80vh;
+            position: relative;
+            z-index: 1;
+            border: outset 3px #FFFFFF;
+            margin: 10px;
+        }
+        
+        .header {
+            background: #000080;
+            color: #FFFFFF;
+            padding: 10px;
+            text-align: center;
+            border-bottom: double 6px #FFFFFF;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #FFFF00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        #map {
+            margin-top: 40px !important;
+            border: outset 3px #FFFFFF;
+        }
+
+        .panel-controls {
+            position: fixed;
+            top: 45px;
+            left: 20px;
+            z-index: 1001;
+            background: #000080;
+            padding: 10px;
+            border: outset 3px #FFFFFF;
+            display: flex;
+            gap: 10px;
+        }
+        .control-button {
+            padding: 8px 16px;
+            background: #C0C0C0;
+            color: #000080;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            border: outset 3px #FFFFFF;
+            cursor: pointer;
+        }
+        .control-button:hover {
+            border-style: inset;
+            background: #FFFFFF;
+        }
+        .info-container {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .activity-indicator {
+            background: #000080;
+            color: #FFFF00;
+            padding: 15px;
+            border: double 3px #FFFFFF;
+            font-weight: bold;
+        }
+        .legend {
+            position: fixed;
+            bottom: 60px;
+            left: 20px;
+            background: #000080;
+            color: #FFFFFF;
+            padding: 4px 8px;
+            border: outset 2px #FFFFFF;
+            z-index: 1000;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 8px;
+            font-size: 0.7rem;
+        }
+        .legend-color {
+            width: 8px;
+            height: 8px;
+            border: 1px solid #FFFFFF;
+            display: inline-block;
+        }
+        .popup-content {
+            padding: 15px;
+            max-width: 350px;
+            line-height: 1.6;
+            background: #C0C0C0;
+            border: outset 3px #FFFFFF;
+            font-family: 'Courier New', monospace;
+        }
+        .popup-header {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #000080;
+            color: #000080;
+            text-transform: uppercase;
+        }
+        .popup-info {
+            margin: 8px 0;
+            background: #FFFFFF;
+            padding: 5px;
+            border: inset 2px #808080;
+        }
+        .popup-label {
+            font-weight: bold;
+            color: #000080;
+        }
+        .quality-indicator {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .audio-container {
+            margin-top: 12px;
+            padding: 10px;
+            background: #000080;
+            border: outset 3px #FFFFFF;
+        }
+        .waveform {
+            background: #FFFFFF;
+            padding: 10px;
+            border: inset 2px #808080;
+            margin-bottom: 10px;
+        }
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .play-button {
+            background: #C0C0C0;
+            color: #000080;
+            border: outset 3px #FFFFFF;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        .play-button:hover {
+            border-style: inset;
+            background: #FFFFFF;
+        }
+        .time {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #FFFF00;
+            background: #000080;
+            padding: 3px 6px;
+            border: inset 2px #FFFFFF;
+        }
+        .activity-dots {
+            display: flex;
+            gap: 4px;
+            margin-top: 10px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #2C2C2C;
+        }
+        .dot.filled {
+            background: #2C2C2C;
+        }
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: white;
+            text-decoration: none;
+            color: #2C2C2C;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: inline-block;
+            background: #C0C0C0;
+            color: #000080;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: outset 3px #FFFFFF;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .back-button:hover {
+            border-style: inset;
+            background: #FFFFFF;
+        }
+        .comparison-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #C0C0C0;
+            padding: 20px;
+            border: outset 3px #FFFFFF;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            font-family: 'Courier New', monospace;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .compare-location {
+            background: #000080;
+            color: #FFFFFF;
+            padding: 20px;
+            border: double 3px #FFFFFF;
+        }
+        
+        /* Custom map marker styles */
+        .leaflet-marker-icon {
+            border: outset 2px #FFFFFF !important;
+            background: #000080 !important;
+        }
+        
+        .leaflet-popup-content-wrapper {
+            background: #C0C0C0 !important;
+            border: outset 3px #FFFFFF !important;
+            border-radius: 0 !important;
+        }
+        
+        .leaflet-popup-tip {
+            background: #C0C0C0 !important;
+        }
+        .hide {
+            display: none !important;
+        }
+        .marquee {
+            background: #000080;
+            color: #FFFF00;
+            white-space: nowrap;
+            padding: 5px 0;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 1rem;
+            border-top: 1px solid #FFFFFF;
+            border-bottom: 1px solid #FFFFFF;
+            overflow: hidden;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(100vw); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Update panel styles to match 90s theme */
+        .filter-panel, .time-filter {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #C0C0C0;
+            padding: 20px;
+            border: outset 3px #FFFFFF;
+            z-index: 1002;
+            font-family: 'Courier New', monospace;
+        }
+
+        .close-button {
+            background: #FF0000;
+            color: #FFFFFF;
+            border: outset 2px #FFFFFF;
+            padding: 2px 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        .close-button:hover {
+            border-style: inset;
+        }
+
+        .filter-section {
+            margin: 15px 0;
+            padding: 10px;
+            background: #FFFFFF;
+            border: inset 2px #808080;
+        }
+
+        .filter-section h4 {
+            color: #000080;
+            margin: 0 0 10px 0;
+        }
+
+        .time-ranges {
+            background: #FFFFFF;
+            padding: 10px;
+            border: inset 2px #808080;
+        }
+
+        .time-ranges label {
+            display: block;
+            margin: 5px 0;
+            color: #000080;
+        }
+
+        .search-container {
+            position: fixed;
+            top: 45px;
+            right: 20px;
+            z-index: 1001;
+            background: #000080;
+            padding: 10px;
+            border: outset 3px #FFFFFF;
+        }
+
+        .search-input {
+            font-family: 'Courier New', monospace;
+            padding: 5px;
+            border: inset 2px #808080;
+            background: #FFFFFF;
+            color: #000080;
+            width: 200px;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #FFFFFF;
+            border: outset 2px #808080;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="marquee">
+        <div class="marquee-content">
+            ♪♫♪ Click on markers to hear sounds! ⚡ Use controls to filter and compare! ⚡ Press ESC to close panels! ♫♪♫
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search sounds..." oninput="handleSearch(this.value)">
+        <div class="search-results" id="search-results"></div>
+    </div>
+    
+    <div class="panel-controls">
+        <button class="control-button" onclick="toggleComparison()">Compare Locations</button>
+        <button class="control-button" onclick="togglePanel('filter-panel')">Filter</button>
+        <button class="control-button" onclick="togglePanel('time-filter')">Time Selection</button>
+        <button class="control-button" onclick="toggleHeatmap()">Toggle Heat Map</button>
+    </div>
+    
+    <div id="filter-panel" class="filter-panel hide">
+        <button class="close-button" onclick="togglePanel('filter-panel')">✕</button>
+        <h3>Filter Recordings</h3>
+        <div class="filter-section">
+            <h4>Sound Categories</h4>
+            <div id="category-filters">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+        <div class="filter-section">
+            <h4>Activity Level</h4>
+            <input type="range" min="0" max="10" value="0" id="activity-filter">
+            <span id="activity-value">0+</span>
+        </div>
+        <div class="filter-section">
+            <h4>Recording Quality</h4>
+            <label><input type="checkbox" value="poor"> Poor</label>
+            <label><input type="checkbox" value="medium"> Medium</label>
+            <label><input type="checkbox" value="good"> Good</label>
+        </div>
+        <button class="control-button" onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <div id="time-filter" class="time-filter hide">
+        <button class="close-button" onclick="togglePanel('time-filter')">✕</button>
+        <h3>Time Selection</h3>
+        <div class="time-ranges">
+            <label><input type="checkbox" value="morning" checked> Morning (5-12)</label>
+            <label><input type="checkbox" value="afternoon" checked> Afternoon (12-17)</label>
+            <label><input type="checkbox" value="evening" checked> Evening (17-20)</label>
+            <label><input type="checkbox" value="night" checked> Night (20-5)</label>
+        </div>
+        <button class="control-button" onclick="applyTimeFilter()">Apply</button>
+    </div>
+    
+    <div class="comparison-panel" id="comparison-panel">
+        <button class="close-button" onclick="togglePanel('comparison-panel')">✕</button>
+        <h3>Location Comparison</h3>
+        <div class="comparison-grid" id="comparison-grid">
+            <div class="compare-location" id="compare-1">
+                Select first location
+            </div>
+            <div class="compare-location" id="compare-2">
+                Select second location
+            </div>
+        </div>
+        <div id="comparisonChart" class="comparison-chart"></div>
+        <div id="analysisReport" class="analysis-report"></div>
+    </div>
+
+    <div class="info-container">
+        <div class="activity-indicator" id="activity-panel">
+            <button class="close-button" onclick="togglePanel('activity-panel')">✕</button>
+            <div><strong>Current Activity Level</strong></div>
+            <div id="activity-display" style="margin-top: 8px;">
+                Click a location to view activity
+            </div>
+        </div>
+    </div>
+
+    <div class="legend" id="time-panel">
+        <button class="close-button" onclick="togglePanel('time-panel')">✕</button>
+        <span>Time:</span>
+        <div class="legend-item">
+            <span class="legend-color" style="background: #2C2C2C"></span>M
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background: #666666"></span>A
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background: #999999"></span>E
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background: #000000"></span>N
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">← Back to Home</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/6.6.3/wavesurfer.min.js"></script>
+    <script src="map.js"></script>
+    <div id="upload-panel" class="upload-panel hide">
+    <button class="close-button" onclick="togglePanel('upload-panel')">✕</button>
+    <h3>Upload Sound Location</h3>
+    <div class="upload-form">
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="text" id="sound-title" placeholder="Enter a title for this sound">
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea id="sound-description" placeholder="Describe what can be heard here..."></textarea>
+        </div>
+        <div class="form-group">
+            <label>Category:</label>
+            <select id="sound-category">
+                <option value="ambient">Ambient</option>
+                <option value="nature">Nature</option>
+                <option value="urban">Urban</option>
+                <option value="social">Social</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Audio File:</label>
+            <input type="file" id="audio-file" accept="audio/*">
+            <div class="or-divider">OR</div>
+            <input type="text" id="drive-link" placeholder="Paste Google Drive link">
+        </div>
+        <div class="form-group">
+            <label>Quality:</label>
+            <select id="sound-quality">
+                <option value="good">Good</option>
+                <option value="medium">Medium</option>
+                <option value="poor">Poor</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Location:</label>
+            <p id="selected-location">Click on the map to select location</p>
+        </div>
+        <button class="control-button" onclick="handleAudioUpload()">Submit</button>
+    </div>
+</div>
+</body>
+</html>
