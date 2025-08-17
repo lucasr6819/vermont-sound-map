@@ -493,7 +493,11 @@ const verified_vermont_sound_pollution = {
         "corporate_ownership": "Owned by Alterra Mountain Company",
         "pass_system": "Part of Ikon Pass network",
         "operational_scale": "Major southern Vermont ski destination",
-        "sources": []
+        "sources": [
+          "https://www.change.org/p/stowe-select-board-support-a-noise-ordinance-for-stowe",
+          "https://www.vermontpublic.org/local-news/2024-02-27/greener-snowmaking-is-helping-ski-resorts-weather-climate-change",
+          "https://skivermont.com/snowmaking-grooming"
+        ]
       },
       {
         "id": 81,
