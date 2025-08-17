@@ -586,29 +586,19 @@ function createHeatmap(query = '') {
                     "https://skivermont.com/snowmaking-grooming"
                 ]
             };
-            let sourcesToRender = item.sources;
-            // Normalize name to match specialSources keys
-            function normalizeKey(name) {
-                return name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
-            }
             // Use id if present, otherwise normalized name
             const key = item.id ? item.id : normalizeKey(item.name);
-            if (specialSources[key]) {
+            let sourcesToRender = item.sources;
+            if (specialSources.hasOwnProperty(key) && Array.isArray(specialSources[key]) && specialSources[key].length > 0) {
                 sourcesToRender = specialSources[key];
             }
             // Only render valid links
             if (sourcesToRender && Array.isArray(sourcesToRender)) {
-                const validSources = sourcesToRender.filter(source => typeof source === 'string' && source.trim() !== '' && source !== 'undefined' && source !== undefined && source !== null);
+                const validSources = sourcesToRender.filter(source => typeof source === 'string' && source.trim() !== '' && source !== 'undefined' && source !== undefined && source !== null && /^(https?:\/\/)/.test(source));
                 if (validSources.length === 0) {
                     sourcesHtml = '<li>No sources available</li>';
                 } else {
-                    sourcesHtml = validSources.map(source => {
-                        if (/^(https?:\/\/)/.test(source)) {
-                            return `<li><a href="${source}" target="_blank">${source}</a></li>`;
-                        } else {
-                            return `<li>${source}</li>`;
-                        }
-                    }).join('');
+                    sourcesHtml = validSources.map(source => `<li><a href="${source}" target="_blank">${source}</a></li>`).join('');
                 }
             } else {
                 sourcesHtml = '<li>No sources available</li>';

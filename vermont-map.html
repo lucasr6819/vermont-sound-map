@@ -59,5 +59,25 @@
     <script src="./vermont-sound-pollution-data.js"></script>
     <script src="./vermont-map.js"></script>
     <script src="./fixed-map.js?v=20250817"></script>
+    <script>
+    // On page load, show heatmap and modal, and make both heatmap and audio points functional
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ensure heatmap toggle is functional and visible
+        const heatmapBtn = document.getElementById('toggle-heatmap');
+        if (heatmapBtn && heatmapBtn.textContent === 'Show Heatmap') {
+            heatmapBtn.click();
+        }
+        // Ensure audio points toggle is functional and visible
+        const audioBtn = document.getElementById('toggle-audio-points');
+        if (audioBtn && audioBtn.textContent === 'Show Audio Points') {
+            audioBtn.click();
+        }
+        // Show modal if exists
+        const heatmapModal = document.getElementById('heatmap-modal');
+        if (heatmapModal) {
+            heatmapModal.style.display = 'block';
+        }
+    });
+    </script>
 </body>
 </html>
