@@ -587,8 +587,14 @@ function createHeatmap(query = '') {
                 ]
             };
             let sourcesToRender = item.sources;
-            if (specialSources[item.id]) {
-                sourcesToRender = specialSources[item.id];
+            // Normalize name to match specialSources keys
+            function normalizeKey(name) {
+                return name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+            }
+            // Use id if present, otherwise normalized name
+            const key = item.id ? item.id : normalizeKey(item.name);
+            if (specialSources[key]) {
+                sourcesToRender = specialSources[key];
             }
             if (sourcesToRender && Array.isArray(sourcesToRender)) {
                 const validSources = sourcesToRender.filter(source => typeof source === 'string' && source.trim() !== '');
