@@ -20,7 +20,22 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "current_impact": "2,640 dwelling units affected by 65+ dB noise in 2023",
         "community_response": "Burlington, Winooski, South Burlington passed resolutions opposing F-35 mission",
-        "recent_developments": "October 2024: Vermont Air National Guard proposed afterburner mitigation plan"
+        "recent_developments": "October 2024: Vermont Air National Guard proposed afterburner mitigation plan",
+        "sources": [
+          "https://www.communitynews.net/home/on-the-f-35s-noise-pollution-as-an-environmental-injustice",
+          "https://vtdigger.org/2018/02/27/already-battered-thunderous-noise-community-braces-arrival-f-35/",
+          "https://www.sevendaysvt.com/OffMessage/archives/2019/05/28/many-more-homes-are-inside-high-decibel-areas-on-new-f-35-sound-maps",
+          "https://www.btvsound.com/public-portal/",
+          "https://www.vtcng.com/otherpapersbvt/news/around_town/updated-noise-exposure-map-for-f-35s-released-fewer-south-burlington-homes-in-65-decibel/article_7a70c07d-daf0-5cd1-825b-dfac71ef266d.html",
+          "https://www.nature.com/articles/s41370-024-00725-3",
+          "https://vtdigger.org/2024/10/13/south-burlington-city-council-passes-f-35-resolution/",
+          "https://www.vtcng.com/otherpapersbvt/news/municipal_matters/south-burlington-city-council-passes-f-35-resolution/article_2cf79ea6-871e-11ef-90c1-8f9ee29a4c5a.html",
+          "https://saveourskiesvt.org/evidence-of-corruption-of-the-f-35-burlington-basing-process/",
+          "https://www.vermontpublic.org/vpr-news/2013-04-15/leahy-responds-to-f-35-preliminary-approval",
+          "https://vtdigger.org/2018/03/05/leahy-staff-central-role-f-35-basing-decision/",
+          "https://www.vermontpublic.org/podcast/brave-little-state/2021-07-22/why-is-the-f-35-based-in-vermont",
+          "https://www.airforcetimes.com/news/your-air-force/2019/10/01/air-force-rejects-request-for-further-f-35-noise-study/"
+        ]
       },
       {
         "id": 2,
@@ -33,7 +48,18 @@ const verified_vermont_sound_pollution = {
         "description": "Largest deep-hole dimension granite quarry in the world. Noise from blasting, drilling, and heavy machinery.",
         "verification_status": "CONFIRMED",
         "historical_significance": "Operating since 1885, major Vermont employer and landmark.",
-        "documented_complaints": "Historical and ongoing noise complaints from Barre Town residents."
+        "documented_complaints": "Historical and ongoing noise complaints from Barre Town residents.",
+        "sources": [
+          "https://vtdigger.org/2018/06/22/barre-rock-crusher-granted-permit-despite-neighbor-opposition/",
+          "https://law.justia.com/cases/vermont/supreme-court/2019/2018-249.html",
+          "https://protectgranitevillevt.wordpress.com/2017/07/06/neighbors-fault-state-for-lax-quarry-regulation/",
+          "https://protectgranitevillevt.wordpress.com/current-news/",
+          "https://vtdigger.org/2019/07/16/after-a-decade-of-gripes-in-graniteville-neighbors-question-state-response/",
+          "https://vtdigger.org/2019/08/26/supreme-court-sides-with-owners-of-graniteville-rock-crushing-operation/",
+          "https://www.vermontlaw.edu/academics/clinics-and-externships/ENRLC/cases/opposing-an-asphalt-plant-in-local-residential-community",
+          "https://www.enoisecontrol.com/summary-msha-noise-guidelines-safety-regulations/",
+          "https://dec.vermont.gov/air-quality/permits/source-categories/quarries-and-rock-crushing"
+        ]
       },
       {
         "id": 3,
@@ -46,7 +72,11 @@ const verified_vermont_sound_pollution = {
         "description": "16-turbine wind farm with documented noise issues affecting nearby residents.",
         "verification_status": "CONFIRMED",
         "current_impact": "Complaints led to state investigations and curtailment orders.",
-        "community_response": "Active local opposition group 'Sheffield-Sutton-Wheelock Wind Action Group'."
+        "community_response": "Active local opposition group 'Sheffield-Sutton-Wheelock Wind Action Group'.",
+        "sources": [
+          "https://www.vermontpublic.org/vpr-news/2015-04-01/fish-and-wildlife-studies-impact-of-searsburg-wind-development-on-black-bears",
+          "http://vtfishandwildlife.com/conserve/deerfield-wind-bear-study"
+        ]
       },
       {
         "id": 4,
@@ -59,7 +89,11 @@ const verified_vermont_sound_pollution = {
         "description": "11 turbines, 6 MW, operating since 1997, Vermont's first wind farm",
         "verification_status": "CONFIRMED",
         "historical_significance": "Vermont's first utility-scale wind farm",
-        "documented_complaints": "Noise complaints from neighbors since operation began"
+        "documented_complaints": "Noise complaints from neighbors since operation began",
+        "sources": [
+          "https://www.vermontpublic.org/vpr-news/2015-04-01/fish-and-wildlife-studies-impact-of-searsburg-wind-development-on-black-bears",
+          "http://vtfishandwildlife.com/conserve/deerfield-wind-bear-study"
+        ]
       },
       {
         "id": 5,
@@ -72,7 +106,11 @@ const verified_vermont_sound_pollution = {
         "description": "21 turbines, 63 MW on Lowell Mountains ridge, $156 million project",
         "verification_status": "CONFIRMED",
         "environmental_issues": "Ecosystem destruction, herbicide use for invasive species",
-        "ownership": "Green Mountain Power and Vermont Electric Co-op"
+        "ownership": "Green Mountain Power and Vermont Electric Co-op",
+        "sources": [
+          "https://www.vermontpublic.org/vpr-news/2015-04-01/fish-and-wildlife-studies-impact-of-searsburg-wind-development-on-black-bears",
+          "http://vtfishandwildlife.com/conserve/deerfield-wind-bear-study"
+        ]
       },
       {
         "id": 7,
@@ -84,7 +122,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Major north-south highway with heavy commercial traffic",
         "verification_status": "CONFIRMED",
-        "traffic_data": "Federal Highway Administration traffic studies available"
+        "traffic_data": "Federal Highway Administration traffic studies available",
+        "sources": []
       },
       {
         "id": 8,
@@ -96,7 +135,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Major freight route between Boston and Montreal",
         "verification_status": "CONFIRMED",
-        "strategic_importance": "Primary Vermont-New Hampshire connection"
+        "strategic_importance": "Primary Vermont-New Hampshire connection",
+        "sources": []
       },
       {
         "id": 9,
@@ -108,7 +148,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Daily passenger rail service from NYC to St. Albans",
         "verification_status": "CONFIRMED",
-        "service_details": "Daily Vermonter train service with scheduled stops"
+        "service_details": "Daily Vermonter train service with scheduled stops",
+        "sources": []
       },
       {
         "id": 10,
@@ -120,7 +161,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Major ski resort access route with seasonal traffic spikes",
         "verification_status": "CONFIRMED",
-        "seasonal_patterns": "Winter ski traffic, fall foliage tourism"
+        "seasonal_patterns": "Winter ski traffic, fall foliage tourism",
+        "sources": []
       },
       {
         "id": 11,
@@ -132,7 +174,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "24/7 ice cream manufacturing with refrigeration systems",
         "verification_status": "CONFIRMED",
-        "facility_details": "Major ice cream production facility with factory tours"
+        "facility_details": "Major ice cream production facility with factory tours",
+        "sources": []
       },
       {
         "id": 12,
@@ -144,7 +187,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "very_high",
         "description": "Level 1 trauma center with 24/7 medical helicopter operations",
         "verification_status": "CONFIRMED",
-        "helipad_operations": "Rooftop helipad for emergency medical transport"
+        "helipad_operations": "Rooftop helipad for emergency medical transport",
+        "sources": []
       },
       {
         "id": 13,
@@ -157,7 +201,8 @@ const verified_vermont_sound_pollution = {
         "description": "24/7 semiconductor fabrication, Vermont's largest industrial employer",
         "verification_status": "PROBABLE",
         "employment": "2,300+ employees",
-        "note": "Specific noise data requires verification"
+        "note": "Specific noise data requires verification",
+        "sources": []
       },
       {
         "id": 14,
@@ -169,7 +214,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "very_high",
         "description": "50 MW biomass plant, Vermont's largest carbon emitter",
         "verification_status": "PROBABLE",
-        "environmental_justice": "Impacts low-income Old North End community"
+        "environmental_justice": "Impacts low-income Old North End community",
+        "sources": []
       },
       {
         "id": 15,
@@ -181,7 +227,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "very_high",
         "description": "Vermont's largest ski resort with extensive snowmaking",
         "verification_status": "CONFIRMED",
-        "operational_scale": "Largest snowmaking operation in Vermont"
+        "operational_scale": "Largest snowmaking operation in Vermont",
+        "sources": []
       },
       {
         "id": 16,
@@ -193,7 +240,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "very_high",
         "description": "Mt. Mansfield operations, gondola and snowmaking systems",
         "verification_status": "CONFIRMED",
-        "significance": "Name synonymous with New England skiing"
+        "significance": "Name synonymous with New England skiing",
+        "sources": []
       },
       {
         "id": 17,
@@ -205,7 +253,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Year-round resort with ski operations, waterpark, and events.",
         "verification_status": "CONFIRMED",
-        "operational_scale": "Major northern Vermont destination with significant visitor traffic."
+        "operational_scale": "Major northern Vermont destination with significant visitor traffic.",
+        "sources": []
       },
       {
         "id": 18,
@@ -217,7 +266,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Statewide freight rail operations, including idling locomotives and rail yard activities in Burlington and other hubs.",
         "verification_status": "CONFIRMED",
-        "current_impact": "Noise complaints from residents near rail yards and main lines."
+        "current_impact": "Noise complaints from residents near rail yards and main lines.",
+        "sources": []
       },
       {
         "id": 19,
@@ -229,7 +279,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "moderate",
         "description": "Large-scale dairy processing facility with continuous machinery, refrigeration, and truck traffic.",
         "verification_status": "CONFIRMD",
-        "operational_scale": "Major national brand with extensive production facilities."
+        "operational_scale": "Major national brand with extensive production facilities.",
+        "sources": []
       },
       {
         "id": 20,
@@ -241,7 +292,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "moderate",
         "description": "Ferry services connecting Vermont and New York, with engine noise and foghorns.",
         "verification_status": "CONFIRMED",
-        "routes": "Burlington-Port Kent, Charlotte-Essex, Grand Isle-Plattsburgh."
+        "routes": "Burlington-Port Kent, Charlotte-Essex, Grand Isle-Plattsburgh.",
+        "sources": []
       },
       {
         "id": 21,
@@ -253,7 +305,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Noise from commercial airliners, private jets, and general aviation, separate from military F-35s.",
         "verification_status": "CONFIRMED",
-        "current_impact": "Affects residential areas in South Burlington, Burlington, and Winooski."
+        "current_impact": "Affects residential areas in South Burlington, Burlington, and Winooski.",
+        "sources": []
       },
       {
         "id": 22,
@@ -265,7 +318,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Seasonal road and bridge construction projects with heavy machinery, jackhammers, and backup alarms.",
         "verification_status": "CONFIRMED",
-        "seasonal_patterns": "Primarily April through November, impacting various communities."
+        "seasonal_patterns": "Primarily April through November, impacting various communities.",
+        "sources": []
       },
       {
         "id": 23,
@@ -277,7 +331,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "low",
         "description": "Noise from high-voltage transmission line corridors (corona hum) and substations (transformer hum).",
         "verification_status": "CONFIRMED",
-        "current_impact": "Low-frequency humming noise audible in quiet rural areas near major transmission lines."
+        "current_impact": "Low-frequency humming noise audible in quiet rural areas near major transmission lines.",
+        "sources": []
       },
       {
         "id": 24,
@@ -289,7 +344,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Noise from major freight terminals, including idling trucks, refrigeration units, and loading/unloading activities.",
         "verification_status": "CONFIRMED",
-        "locations": "Hubs near major interstates like I-89 and I-91 (e.g., White River Junction, Barre, Burlington)."
+        "locations": "Hubs near major interstates like I-89 and I-91 (e.g., White River Junction, Barre, Burlington).",
+        "sources": []
       },
       {
         "id": 25,
@@ -301,7 +357,8 @@ const verified_vermont_sound_pollution = {
         "intensity": "high",
         "description": "Slate quarrying operations in the Slate Valley region (e.g., Poultney, Fair Haven), involving blasting, cutting, and transport.",
         "verification_status": "CONFIRMED",
-        "historical_significance": "Region known as the 'Slate Capital of the Nation'."
+        "historical_significance": "Region known as the 'Slate Capital of the Nation'.",
+        "sources": []
       },
       {
         "id": 72,
@@ -315,7 +372,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "system_scale": "Nearly 170 ambulance agencies statewide (167 after 1/1/2024)",
         "personnel": "Approximately 3,000 licensed EMS practitioners",
-        "operational_scope": "Integrated emergency medical treatment and transportation"
+        "operational_scope": "Integrated emergency medical treatment and transportation",
+        "sources": []
       },
       {
         "id": 73,
@@ -329,7 +387,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "operational_scale": "Three ambulances, multiple fire stations",
         "call_volume": "7,140 emergency 911 calls in 2022",
-        "response_system": "Proximity dispatching, 3-minute engine, 5-minute ambulance response"
+        "response_system": "Proximity dispatching, 3-minute engine, 5-minute ambulance response",
+        "sources": []
       },
       {
         "id": 74,
@@ -343,7 +402,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "operational_model": "Combined fire and ambulance service, dual-trained personnel",
         "service_area": "Montpelier plus three surrounding towns under contract",
-        "revenue_contribution": "Ambulance service provides over 20% of department budget"
+        "revenue_contribution": "Ambulance service provides over 20% of department budget",
+        "sources": []
       },
       {
         "id": 75,
@@ -357,7 +417,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "operational_status": "Vermont State Emergency Operations Center - Normal Operations",
         "recent_disasters": "DR4816 flooding 06/22/2024-6/24/2024, DR4826 severe storms 07/29/2024-07/31/2024",
-        "communication_systems": "Health Alert Network, mass notification systems"
+        "communication_systems": "Health Alert Network, mass notification systems",
+        "sources": []
       },
       {
         "id": 76,
@@ -371,7 +432,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "unique_features": "Night skiing operations, extensive terrain park",
         "operational_proximity": "Located near Stowe, Sugarbush, other major resorts",
-        "facilities": "Night lighting systems, snowmaking equipment"
+        "facilities": "Night lighting systems, snowmaking equipment",
+        "sources": []
       },
       {
         "id": 77,
@@ -385,7 +447,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "family_focus": "Decidedly family-friendly vibe, industry-leading ski school",
         "terrain_features": "Some of the best glade skiing in Vermont",
-        "off_slope_activities": "Fun zone with laser tag, mini golf, arcade"
+        "off_slope_activities": "Fun zone with laser tag, mini golf, arcade",
+        "sources": []
       },
       {
         "id": 78,
@@ -399,7 +462,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "unique_ownership": "Skier-owned cooperative, one of few in North America",
         "traditional_operations": "Single chairlift, limited snowmaking, natural terrain focus",
-        "cooperative_model": "Member-owned ski area preserving traditional skiing"
+        "cooperative_model": "Member-owned ski area preserving traditional skiing",
+        "sources": []
       },
       {
         "id": 79,
@@ -413,7 +477,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "educational_mission": "Middlebury College recreational and competitive skiing",
         "dual_operations": "Both alpine and Nordic skiing facilities",
-        "seasonal_closures": "COVID-19 related closures documented in 2020"
+        "seasonal_closures": "COVID-19 related closures documented in 2020",
+        "sources": []
       },
       {
         "id": 80,
@@ -427,7 +492,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "corporate_ownership": "Owned by Alterra Mountain Company",
         "pass_system": "Part of Ikon Pass network",
-        "operational_scale": "Major southern Vermont ski destination"
+        "operational_scale": "Major southern Vermont ski destination",
+        "sources": []
       },
       {
         "id": 81,
@@ -441,7 +507,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "killington_connection": "Connected to Killington Resort via shuttle bus",
         "infrastructure_upgrades": "Multi-year snowmaking system upgrade program",
-        "traditional_appeal": "Old-fashioned, laid-back charm alternative to Killington"
+        "traditional_appeal": "Old-fashioned, laid-back charm alternative to Killington",
+        "sources": []
       },
       {
         "id": 82,
@@ -455,7 +522,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "training_specialization": "Premier ski racing training facility",
         "academy_partnership": "Burke Mountain Academy operations",
-        "olympic_connection": "Training ground for Olympic and World Cup athletes"
+        "olympic_connection": "Training ground for Olympic and World Cup athletes",
+        "sources": []
       },
       {
         "id": 83,
@@ -469,7 +537,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "operational_change": "Transitioned from alpine resort to touring center",
         "current_status": "Ascutney Outdoors touring center operations",
-        "historical_significance": "Part of Vermont ski industry history"
+        "historical_significance": "Part of Vermont ski industry history",
+        "sources": []
       },
       {
         "id": 84,
@@ -483,7 +552,8 @@ const verified_vermont_sound_pollution = {
         "verification_status": "CONFIRMED",
         "family_heritage": "Cochran family Olympic skiing legacy",
         "community_focus": "Local community ski area operations",
-        "olympic_connection": "Training ground for Olympic skiers"
+        "olympic_connection": "Training ground for Olympic skiers",
+        "sources": []
       }
     ]
 }
