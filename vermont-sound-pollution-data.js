@@ -599,6 +599,7 @@ const verified_vermont_sound_pollution = {
         "training_specialization": "Premier ski racing training facility",
         "academy_partnership": "Burke Mountain Academy operations",
         "olympic_connection": "Training ground for Olympic and World Cup athletes",
+        "sourceKeys": ["source_13", "source_19", "source_12"],
         "sources": [
           "PeakRankings Vermont ski resort analysis",
           "Burke Mountain Academy documentation",
