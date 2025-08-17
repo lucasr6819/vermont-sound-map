@@ -39,9 +39,13 @@ function loadSources(json) {
 }
 
 function getSourcesHtml(sound) {
-    if (!sound.sourceKeys || sound.sourceKeys.length === 0) return '<div class="popup-info">No sources available</div>';
+    let keys = sound.sourceKeys;
+    if (!Array.isArray(keys) || keys.length === 0) {
+        // Show all sources if none specified
+        keys = Object.keys(vermontSources);
+    }
     return `<div class="popup-info"><span class="popup-label">Sources:</span><ul style='margin: 6px 0 0 0; padding-left: 18px;'>` +
-        sound.sourceKeys.map(key => {
+        keys.map(key => {
             const src = vermontSources[key];
             if (!src) return '';
             return `<li><a href='${src.url}' target='_blank' style='color:#0074D9;'>${src.location}</a>: ${src.description}</li>`;
