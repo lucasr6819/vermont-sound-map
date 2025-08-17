@@ -31,6 +31,23 @@ const connectionColors = {
     'political': '#DC143C'    // Red
 };
 
+// --- New sources loader and display function ---
+let vermontSources = {};
+
+function loadSources(json) {
+    vermontSources = json;
+}
+
+function getSourcesHtml(sound) {
+    if (!sound.sourceKeys || sound.sourceKeys.length === 0) return '<div class="popup-info">No sources available</div>';
+    return `<div class="popup-info"><span class="popup-label">Sources:</span><ul style='margin: 6px 0 0 0; padding-left: 18px;'>` +
+        sound.sourceKeys.map(key => {
+            const src = vermontSources[key];
+            if (!src) return '';
+            return `<li><a href='${src.url}' target='_blank' style='color:#0074D9;'>${src.location}</a>: ${src.description}</li>`;
+        }).join('') + '</ul></div>';
+}
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Create the map centered on Vermont
@@ -41,6 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
         attribution: '© OpenStreetMap contributors',
         maxZoom: 19
     }).addTo(map);
+
+    // Load sources from JSON file on page load
+    fetch('vermont-sources.json')
+        .then(response => response.json())
+        .then(data => loadSources(data))
+        .catch(err => console.error('Failed to load sources JSON:', err));
 
     // Initialize markers for each sound and preserve original functionality
     vermontSounds.forEach(sound => {
@@ -74,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         ">${tag}</span>
                     `).join('')}
                 </div>
+                ${getSourcesHtml(sound)}
                 <div class="audio-container">
                     ${createAudioPlayer(sound)}
                 </div>
@@ -286,4 +310,10 @@ function displaySearchResults(results) {
             if (sound) {
                 map.setView([sound.location.lat, sound.location.lng], 12);
                 const marker = markers.get(soundId);
-                if
+                if (marker) {
+                    marker.openPopup();
+                }
+            }
+        });
+    });
+}
