@@ -395,7 +395,14 @@ function createHeatmap(query = '') {
             if (!query) return true;
             return item.name.toLowerCase().includes(lowerCaseQuery) ||
                    item.description.toLowerCase().includes(lowerCaseQuery) ||
-                   item.sources.some(source => source.toLowerCase().includes(lowerCaseQuery));
+                   (Array.isArray(item.sources) && item.sources.some(source => {
+                        if (typeof source === 'string') {
+                            return source.toLowerCase().includes(lowerCaseQuery);
+                        } else if (typeof source === 'object' && source.text) {
+                            return source.text.toLowerCase().includes(lowerCaseQuery);
+                        }
+                        return false;
+                   }));
         })
         .map(item => {
             const marker = L.circleMarker([item.lat, item.lng], {
@@ -409,6 +416,23 @@ function createHeatmap(query = '') {
 
             marker.bindTooltip(item.name);
 
+            // Fix: Render sources correctly for both string and object formats
+            let sourcesHtml = '';
+            if (item.sources && Array.isArray(item.sources)) {
+                sourcesHtml = item.sources.map(source => {
+                    if (typeof source === 'string') {
+                        return `<li>${source}</li>`;
+                    } else if (typeof source === 'object' && source.text && source.url) {
+                        return `<li><a href="${source.url}" target="_blank">${source.text}</a></li>`;
+                    } else if (typeof source === 'object' && source.text) {
+                        return `<li>${source.text}</li>`;
+                    }
+                    return '';
+                }).join('');
+            } else {
+                sourcesHtml = '<li>No sources available</li>';
+            }
+
             const popupContent = `
                 <div class="heatmap-popup">
                     <h4>${item.name}</h4>
@@ -416,9 +440,7 @@ function createHeatmap(query = '') {
                     <p><strong>Noise Level:</strong> ${item.noise_level_db} dB</p>
                     <div class="sources">
                         <strong>Sources:</strong>
-                        <ul>
-                            ${item.sources.map(source => `<li><a href="${source.url}" target="_blank">${source.text}</a></li>`).join('')}
-                        </ul>
+                        <ul>${sourcesHtml}</ul>
                     </div>
                 </div>
             `;
@@ -426,7 +448,6 @@ function createHeatmap(query = '') {
             marker.on('click', () => {
                 showModal(popupContent);
             });
-            
             return marker;
         });
 
