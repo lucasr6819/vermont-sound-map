@@ -596,8 +596,9 @@ function createHeatmap(query = '') {
             if (specialSources[key]) {
                 sourcesToRender = specialSources[key];
             }
+            // Only render valid links
             if (sourcesToRender && Array.isArray(sourcesToRender)) {
-                const validSources = sourcesToRender.filter(source => typeof source === 'string' && source.trim() !== '');
+                const validSources = sourcesToRender.filter(source => typeof source === 'string' && source.trim() !== '' && source !== 'undefined' && source !== undefined && source !== null);
                 if (validSources.length === 0) {
                     sourcesHtml = '<li>No sources available</li>';
                 } else {
