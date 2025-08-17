@@ -523,7 +523,11 @@ const verified_vermont_sound_pollution = {
         "training_specialization": "Premier ski racing training facility",
         "academy_partnership": "Burke Mountain Academy operations",
         "olympic_connection": "Training ground for Olympic and World Cup athletes",
-        "sources": []
+        "sources": [
+          "https://www.change.org/p/stowe-select-board-support-a-noise-ordinance-for-stowe",
+          "https://www.vermontpublic.org/local-news/2024-02-27/greener-snowmaking-is-helping-ski-resorts-weather-climate-change",
+          "https://skivermont.com/snowmaking-grooming"
+        ]
       },
       {
         "id": 83,
