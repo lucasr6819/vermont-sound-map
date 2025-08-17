@@ -419,12 +419,19 @@ function createHeatmap(query = '') {
             // Fix: Render sources correctly for both string and object formats
             let sourcesHtml = '';
             if (item.sources && Array.isArray(item.sources)) {
-                if (item.sources.length === 0) {
+                // Filter out undefined, null, or empty strings
+                const validSources = item.sources.filter(source => source && source !== '' && source !== undefined);
+                if (validSources.length === 0) {
                     sourcesHtml = '<li>No sources available</li>';
                 } else {
-                    sourcesHtml = item.sources.map(source => {
+                    sourcesHtml = validSources.map(source => {
                         if (typeof source === 'string') {
-                            return `<li>${source}</li>`;
+                            // If string looks like a URL, render as link
+                            if (/^(https?:\/\/)/.test(source)) {
+                                return `<li><a href="${source}" target="_blank">${source}</a></li>`;
+                            } else {
+                                return `<li>${source}</li>`;
+                            }
                         } else if (typeof source === 'object' && source.text && source.url) {
                             return `<li><a href="${source.url}" target="_blank">${source.text}</a></li>`;
                         } else if (typeof source === 'object' && source.text) {
