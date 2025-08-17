@@ -38,18 +38,42 @@ function loadSources(json) {
     vermontSources = json;
 }
 
-function getSourcesHtml(sound) {
-    let keys = sound.sourceKeys;
-    if (!Array.isArray(keys) || keys.length === 0) {
-        // Show all sources if none specified
-        keys = Object.keys(vermontSources);
-    }
-    return `<div class="popup-info"><span class="popup-label">Sources:</span><ul style='margin: 6px 0 0 0; padding-left: 18px;'>` +
-        keys.map(key => {
-            const src = vermontSources[key];
-            if (!src) return '';
-            return `<li><a href='${src.url}' target='_blank' style='color:#0074D9;'>${src.location}</a>: ${src.description}</li>`;
-        }).join('') + '</ul></div>';
+function updateAllPopupsWithSources() {
+    markers.forEach((marker, id) => {
+        const sound = vermontSounds.find(s => s.id === id || s.id === Number(id));
+        if (sound) {
+            const popupContent = `
+                <div class="sound-popup">
+                    <h3>${sound.title}</h3>
+                    <p>${sound.description}</p>
+                    <div class="popup-info">
+                        <span class="popup-label">Category:</span> ${sound.category} - ${sound.subcategory}
+                    </div>
+                    <div class="popup-info">
+                        <span class="popup-label">Date:</span> ${sound.date}
+                    </div>
+                    <div class="tags">
+                        ${sound.tags.map(tag => `
+                            <span class="tag" style="
+                                background: #000080;
+                                color: #FFFFFF;
+                                border: outset 1px #FFFFFF;
+                                font-family: 'Courier New', monospace;
+                                font-size: 11px;
+                                padding: 2px 6px;
+                                margin: 2px;
+                                display: inline-block;
+                            ">${tag}</span>
+                        `).join('')}
+                    </div>
+                    <div class="audio-container">
+                        ${createAudioPlayer(sound)}
+                    </div>
+                </div>
+            `;
+            marker.setPopupContent(popupContent);
+        }
+    });
 }
 
 // Initialize when DOM is ready
@@ -66,7 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load sources from JSON file on page load
     fetch('vermont-sources.json')
         .then(response => response.json())
-        .then(data => loadSources(data))
+        .then(data => {
+            loadSources(data);
+            updateAllPopupsWithSources();
+        })
         .catch(err => console.error('Failed to load sources JSON:', err));
 
     // Initialize markers for each sound and preserve original functionality
@@ -101,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         ">${tag}</span>
                     `).join('')}
                 </div>
-                ${getSourcesHtml(sound)}
                 <div class="audio-container">
                     ${createAudioPlayer(sound)}
                 </div>
